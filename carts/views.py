@@ -44,8 +44,6 @@ def add_cart(request, product_id):
             existing_variations = item.variations.all()
             ex_var_list.append(list(existing_variations))
             id.append(item.id)
-        print(ex_var_list)
-        print(product_variation)
         if product_variation in ex_var_list:
             index = ex_var_list.index(product_variation)
             item_id = id[index]

@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+<title>Login</title>
+{% endblock %}
+
+{% block content %}
+<section class="section-conten padding-y" style="min-height:84vh">
+
+
+    {% if request.GET.command == 'verification' %}
+    <div class="container mx-auto alert alert-info text-center" role="alert" style="max-width: 1024px; margin-top:100px;">
+        Thank you for registering. To complete your verification click on a link in email sent to {{ request.GET.email }}
+        <br><br>
+        Already verified? <a href="{% url 'login' %}">Login</a>
+    </div>
+    {% else %}
+
+<!-- ============================ COMPONENT LOGIN   ================================= -->
+	<div class="card mx-auto" style="max-width: 380px; margin-top:100px;">
+      <div class="card-body">
+      <h4 class="card-title pb-2" style="text-align: center;">Sign in</h4>
+                                      {% include 'includes/alerts.html' %}
+          <div class="pt-2">
+      <form action="{% url 'login' %}" method="POST">
+          {% csrf_token %}
+          <div class="form-group">
+			 <input type="email" class="form-control" placeholder="Email Address" name="email">
+          </div> <!-- form-group// -->
+          <div class="form-group">
+			<input type="password" class="form-control" placeholder="Password" name="password">
+          </div> <!-- form-group// -->
+          
+          <div class="form-group">
+          	<a href="{% url 'forgot_password' %}" class="float-right">Forgot password?</a>
+           
+          </div> <!-- form-group form-check .// -->
+          <div class="form-group">
+              <button type="submit" class="btn btn-primary btn-block"> Login  </button>
+          </div> <!-- form-group// -->    
+      </form>
+              </div>
+      </div> <!-- card-body.// -->
+    </div> <!-- card .// -->
+
+     <p class="text-center mt-4">Don't have account? <a href="{% url 'register' %}">Sign up</a></p>
+     <br><br>
+    {% endif %}
+</section>
+{% endblock %}
