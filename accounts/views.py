@@ -109,7 +109,11 @@ def login(request):
                 params = dict(x.split('=') for x in query.split('&'))
                 if 'next' in params:
                     next_page = params['next']
-                    return redirect(next_page)
+                    if 'logout' in next_page:
+                        messages.success(request, "You're now logged in")
+                        return redirect('dashboard')
+                    else:
+                        return redirect(next_page)
             except:
                 messages.success(request, "You're now logged in")
                 return redirect('dashboard')
@@ -122,8 +126,8 @@ def login(request):
 @login_required(login_url='login')
 def logout(request):
     auth.logout(request)
-    messages.success(request, 'You are logged out')
-    return redirect('login')
+    url = request.META.get('HTTP_REFERER')
+    return redirect(url)
 
 
 @login_required(login_url='login')
