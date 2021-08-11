@@ -4,7 +4,7 @@ from .views import _cart_id
 
 def cart_size(request):
     cart_count = 0
-    if 'admin' in request.path:
+    if 'secure-login' in request.path:
         return {}
     else:
         try:

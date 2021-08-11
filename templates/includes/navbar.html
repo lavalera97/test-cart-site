@@ -8,18 +8,9 @@
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarTop4">
-    <ul class="navbar-nav mr-auto">
-    	<li class="nav-item dropdown">
-		 	<a href="#" class="nav-link">   English </a>
-
-		</li>
-		<li class="nav-item dropdown">
-			<a href="#" class="nav-link"> USD </a>
-		</li>
-    </ul>
-    <ul class="navbar-nav">
-		<li><a href="#" class="nav-link"> <i class="fa fa-envelope"></i> Email </a></li>
-		<li><a href="#" class="nav-link"> <i class="fa fa-phone"></i> Call us </a></li>
+    <ul class="navbar-nav ml-auto">
+		<li><a href="https://github.com/lavalera97" class="nav-link"> <i class="fa fa-envelope"></i> Email </a></li>
+		<li><a href="https://github.com/lavalera97" class="nav-link"> <i class="fa fa-phone"></i> Call us </a></li>
 	</ul> <!-- list-inline //  -->
   </div> <!-- navbar-collapse .// -->
 </div> <!-- container //  -->
@@ -28,7 +19,7 @@
 <section class="header-main border-bottom">
 	<div class="container">
 <div class="row align-items-center">
-	<div class="col-lg-2 col-md-3 col-6">
+	<div class="col-lg-2 col-md-3">
 		<a href="{% url 'home' %}" class="brand-wrap">
 			<img class="logo" src="{% static './images/logo.png' %}">
 		</a> <!-- brand-wrap.// -->
@@ -46,7 +37,7 @@
 		</div>  <!-- category-wrap.// -->
 	</div> <!-- col.// -->
 	<a href="{% url 'store' %}" class="btn btn-outline-primary">Store</a>
-	<div class="col-lg  col-md-6 col-sm-12 col">
+	<div class="col-lg  col-md-6 col-sm-12 search-div">
 		<form action="{% url 'search' %}" class="search" method="GET">
 			<div class="input-group w-100">
 			    <input type="text" class="form-control" style="width:60%;" placeholder="Search" name="keyword">
@@ -59,10 +50,10 @@
 		    </div>
 		</form> <!-- search-wrap .end// -->
 	</div> <!-- col.// -->
-	<div class="col-lg-3 col-sm-6 col-8 order-2 order-lg-3">
-				<div class="d-flex justify-content-end mb-3 mb-lg-0">
+	<div class="col-lg-3 col-md-6 order-2 order-lg-3">
+				<div class="d-flex justify-content-end mb-3 mb-lg-0 ">
 					{% if user.id is None %}
-					<div class="widget-header">
+					<div class="widget-header user-auth">
 						<small class="title text-muted">Welcome guest!</small>
 						<div>
 							<a href="{% url 'login' %}">Login</a> <span class="dark-transp"> | </span>
@@ -70,7 +61,7 @@
 						</div>
 					</div>
 					{% else %}
-					<div class="widget-header">
+					<div class="widget-header user-auth">
 						<small class="title text-muted">Welcome {{ user.first_name }}!</small>
 						<div>
 							<a href="{% url 'dashboard' %}">Dashboard</a> <span class="dark-transp"> | </span>
